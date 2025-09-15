@@ -3,10 +3,9 @@ import { inngest } from "../../../inngest/client";
 import {
   syncUserCreation,
   syncUserUpdation,
-  syncUserDeletion,
-} from "../../../inngest/functions"; // <-- import your functions here
+  syncUserDeletion
+} from "../../../inngest/functions";
 
-// Create an API that serves your functions
 export const { GET, POST, PUT } = serve({
   client: inngest,
   functions: [

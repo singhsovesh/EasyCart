@@ -1,10 +1,10 @@
-import { inngest } from './client';
-import prisma from '@/lib/prisma';
+import { inngest } from "./client";
+import prisma from "@/lib/prisma";
 
-// Inngest Function to save user data to a database
+// Create user
 export const syncUserCreation = inngest.createFunction(
-  { id: 'sync-user-create' },
-  { event: 'clerk/user.created' },
+  { id: "sync-user-create" },
+  { event: "clerk/user.created" },
   async ({ event }) => {
     const { data } = event;
     await prisma.user.create({
@@ -18,10 +18,10 @@ export const syncUserCreation = inngest.createFunction(
   }
 );
 
-// Inngest Function to update user data in database
+// Update user
 export const syncUserUpdation = inngest.createFunction(
-  { id: 'sync-user-update' },
-  { event: 'clerk/user.updated' },
+  { id: "sync-user-update" },
+  { event: "clerk/user.updated" },
   async ({ event }) => {
     const { data } = event;
     await prisma.user.update({
@@ -35,10 +35,10 @@ export const syncUserUpdation = inngest.createFunction(
   }
 );
 
-// Inngest Function to delete user from database
+// Delete user
 export const syncUserDeletion = inngest.createFunction(
-  { id: 'sync-user-delete' }, // ✅ unique ID
-  { event: 'clerk/user.deleted' }, // ✅ correct event
+  { id: "sync-user-deletion" },
+  { event: "clerk/user.deleted" }, // 🔥 corrected event
   async ({ event }) => {
     const { data } = event;
     await prisma.user.delete({
